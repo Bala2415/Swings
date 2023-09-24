@@ -1,19 +1,15 @@
-package calculations;
-import java.util.Scanner;
+package relations;
+
 public class Rectangle {
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		float l, b, a;
-		Scanner s = new Scanner(System.in);
-		System.out.println("Enter the length and breadth: ");
-		l = s.nextFloat();
-		b=s.nextFloat();
+	float l, b, a;
+	Rectangle(Line o1, Line o2)
+	{
+		l = o1.s;
+		b = o2.s;
 		a = l*b;
-		System.out.println("Area: " + a);
 	}
-
+	void get()
+	{
+		System.out.println("Area of the rectangle with length " + l +" and breadth " + b + " : " + a);
+	}
 }

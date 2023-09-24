@@ -1,53 +1,32 @@
-package exceptions;
-
-import java.util.InputMismatchException;
+package intro;
 
 public class Student {
-	String nm;
-	int tot;
-	void set() throws InvalidMarkException
+	private String nm;
+	private int m[] = new int[5];
+	private float p;
+	void set(String nm, int m[])
 	{
-		System.out.println("Enter Student Name and total: ");
-		java.util.Scanner s = new java.util.Scanner(System.in);
-		java.util.Scanner ss = new java.util.Scanner(System.in);
-		try
-		{
-		nm = s.nextLine();
-		tot = ss.nextInt();
-		if(tot<0 || tot>500)
-		{
-			tot=0;
-			throw new InvalidMarkException("Total Out Of Range");
-		}
-		}
-		catch(InvalidMarkException e)
-		{
-			throw e;
-		}
-		catch(InputMismatchException e)
-		{
-			throw e;
-		}
+		this.nm = nm;
+		for(int i=0; i<5; i++)
+			this.m[i] = m[i];
+		calPercentage();
+	}
+	void calPercentage()
+	{
+		int tot=0;
+		for(int i=0; i<5; i++)
+			tot += m[i];
+		p = tot/500.0f*100;
 	}
 	void get()
 	{
-		System.out.println(nm + "  " + tot);
+		System.out.println(nm);
+		for(int i=0; i<5;i++)
+			System.out.println(m[i] + "  ");
 	}
-	public static void main(String[] args)
+	float getPercentage()// int[]
 	{
-		Student s1 = new Student();
-		try
-		{
-		s1.set();
-		}
-		catch(InvalidMarkException e)
-		{
-			System.out.println(e);
-		}
-		catch(InputMismatchException e)
-		{
-			System.out.println("Enter numbers only");
-		}
-		s1.get();
+		return p;
 	}
+	
 }
